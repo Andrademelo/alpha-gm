@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Turma - Sistema Escolar</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/editar_turma.css') }}">
+</head>
+
+<body>
+
+    <header class="header">
+        <h1>🏫 Sistema Escolar</h1>
+        <a href="/turmas" class="btn-voltar">← Voltar</a>
+    </header>
+
+    <div class="container">
+        
+        <div class="form-card">
+            
+            <div class="card-header">
+                <h2>Editar Turma</h2>
+                <p>Atualize os dados da turma abaixo.</p>
+            </div>
+
+            <div class="card-body">
+
+                <form method="POST">
+
+                    <div class="form-group">
+                        <label for="nome">Nome da Turma</label>
+                        <div class="input-wrapper">
+                            <span class="icon">🏫</span>
+                            <input type="text" 
+                                   id="nome"
+                                   name="nome" 
+                                   value="{{ turma[1] }}"
+                                   class="form-control" 
+                                   placeholder="Digite o nome da turma" 
+                                   required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="serie">Série</label>
+                        <div class="input-wrapper">
+                            <span class="icon">📚</span>
+                            <input type="text" 
+                                   id="serie"
+                                   name="serie" 
+                                   value="{{ turma[2] }}"
+                                   class="form-control" 
+                                   placeholder="Ex: 1º Ano"
+                                   required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="sala">Sala</label>
+                        <div class="input-wrapper">
+                            <span class="icon">🚪</span>
+                            <input type="text" 
+                                   id="sala"
+                                   name="sala" 
+                                   value="{{ turma[3] }}"
+                                   class="form-control" 
+                                   placeholder="Ex: Sala 101">
+                        </div>
+                    </div>
+
+                    <div class="btn-group">
+                        <a href="/turmas" class="btn-voltar">
+                            ← Voltar
+                        </a>
+                        <button type="submit" class="btn-submit">
+                            <span>💾 Salvar alterações</span>
+                        </button>
+                    </div>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+</html>

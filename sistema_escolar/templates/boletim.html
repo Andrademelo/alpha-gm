@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boletim - Sistema Escolar</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/boletim.css') }}">
+</head>
+
+<body>
+
+    <!-- Cabeçalho -->
+    <div class="header">
+        <h1>📊 Boletim</h1>
+
+        <a href="/dashboard_aluno" class="btn-voltar">
+            ← Voltar
+        </a>
+    </div>
+
+    <!-- Container Principal -->
+    <div class="container">
+
+        <!-- Cabeçalho da Página -->
+        <div class="page-header">
+
+            <div>
+                <h2>Boletim Escolar</h2>
+                <p>Suas notas por disciplina</p>
+            </div>
+
+        </div>
+
+        <!-- Card da Tabela -->
+        <div class="table-card">
+
+            <div class="table-wrapper">
+
+                <table>
+
+                    <thead>
+                        <tr>
+                            <th>Disciplina</th>
+                            <th>Nota 1</th>
+                            <th>Nota 2</th>
+                            <th>Nota 3</th>
+                            <th>Nota 4</th>
+                            <th>Média</th>
+                            <th>Situação</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+
+                        {% for nota in boletim %}
+                        <tr>
+
+                            <td data-label="Disciplina">
+                                {{ nota[1] }}
+                            </td>
+
+                            <td data-label="Nota 1" class="nota-cell">
+                                {{ nota[2] }}
+                            </td>
+
+                            <td data-label="Nota 2" class="nota-cell">
+                                {{ nota[3] }}
+                            </td>
+
+                            <td data-label="Nota 3" class="nota-cell">
+                                {{ nota[4] }}
+                            </td>
+
+                            <td data-label="Nota 4" class="nota-cell">
+                                {{ nota[5] }}
+                            </td>
+
+                            <td data-label="Média" class="media-cell">
+                                {{ nota[6] }}
+                            </td>
+
+                            <td data-label="Situação">
+
+                                {% if nota[7] == "Aprovado" %}
+
+                                    <span class="situacao aprovado">
+                                        {{ nota[7] }}
+                                    </span>
+
+                                {% elif nota[7] == "Recuperação" %}
+
+                                    <span class="situacao recuperacao">
+                                        {{ nota[7] }}
+                                    </span>
+
+                                {% else %}
+
+                                    <span class="situacao reprovado">
+                                        {{ nota[7] }}
+                                    </span>
+
+                                {% endif %}
+
+                            </td>
+
+                        </tr>
+                        {% endfor %}
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+            <!-- Rodapé -->
+            <div class="table-footer">
+
+                <p>
+                    Total: {{ boletim|length }} disciplina(s)
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+</html>

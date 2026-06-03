@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastrar Usuário - Sistema Escolar</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/cadastrar_usuario.css') }}">
+</head>
+
+<body>
+
+    <!-- Cabeçalho -->
+    <div class="header">
+        <h1>➕ Cadastrar Usuário</h1>
+        <a href="/dashboard" class="btn-voltar">← Voltar</a>
+    </div>
+
+    <!-- Container -->
+    <div class="container">
+        
+        <!-- Card do Formulário -->
+        <div class="form-card">
+            <h2>Novo Usuário</h2>
+            <p class="subtitle">Preencha os dados abaixo</p>
+
+            <form method="POST">
+                
+                <!-- Campo Nome -->
+                <div class="input-group">
+                    <label for="nome">Nome Completo</label>
+                    <div class="input-wrapper">
+                        <span class="icon">👤</span>
+                        <input 
+                            type="text" 
+                            id="nome"
+                            name="nome" 
+                            placeholder="Digite o nome completo" 
+                            required
+                        >
+                    </div>
+                </div>
+
+                <!-- Campo Usuário -->
+                <div class="input-group">
+                    <label for="usuario">Usuário</label>
+                    <div class="input-wrapper">
+                        <span class="icon">🔹</span>
+                        <input 
+                            type="text" 
+                            id="usuario"
+                            name="usuario" 
+                            placeholder="Digite o usuário" 
+                            required
+                        >
+                    </div>
+                </div>
+
+                <!-- Campo Senha -->
+                <div class="input-group">
+                    <label for="senha">Senha</label>
+                    <div class="input-wrapper">
+                        <span class="icon">🔒</span>
+                        <input 
+                            type="password" 
+                            id="senha"
+                            name="senha" 
+                            placeholder="Digite a senha" 
+                            required
+                        >
+                    </div>
+                </div>
+
+                <!-- Campo Cargo -->
+                <div class="input-group">
+                    <label for="cargo">Cargo/Função</label>
+                    <select name="cargo" id="cargo" required>
+                        <option value="" disabled selected>Selecione o cargo</option>
+                        <option value="admin">Administrador</option>
+                        <option value="professor">Professor</option>
+                        <option value="secretaria">Secretária</option>
+                        <option value="aluno">Aluno</option>
+                    </select>
+                </div>
+
+                <!-- Botões -->
+                <div class="btn-group">
+                    <a href="/dashboard" class="btn-voltar-form">
+                        ← Voltar
+                    </a>
+                    <button type="submit" class="btn-submit">
+                        <span>Cadastrar</span>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 5v14M5 12h14"/>
+                        </svg>
+                    </button>
+                </div>
+
+            </form>
+
+            <!-- Rodapé -->
+            <div class="form-footer">
+                <p>&copy; 2026 Sistema Alpha GM.</p>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>

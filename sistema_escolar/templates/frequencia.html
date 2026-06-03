@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frequência - Sistema Escolar</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/frequencia.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='img/logo.png') }}">
+</head>
+
+<body>
+
+    <!-- Cabeçalho -->
+    <div class="header">
+        <h1>✅ Frequência</h1>
+        <a href="/dashboard_professor" class="btn-voltar">← Voltar</a>
+    </div>
+
+    <!-- Container Principal -->
+    <div class="container">
+        
+        <!-- Cabeçalho da Página -->
+        <div class="page-header">
+            <div class="title-area">
+                <h2>Lista de Frequência</h2>
+                <p>Controle de presença dos alunos</p>
+            </div>
+            <a href="/cadastrar_frequencia" class="btn-cadastrar">
+                ➕ Cadastrar Frequência
+            </a>
+        </div>
+
+        <!-- Card da Tabela -->
+        <div class="table-card">
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Aluno</th>
+                            <th>Data</th>
+                            <th>Status</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for f in frequencia %}
+                        <tr>
+                            <td data-label="Aluno">{{ f[1] }}</td>
+                            <td data-label="Data">{{ f[2] }}</td>
+                            <td data-label="Status">
+                                <span class="status-badge status-{{ f[3]|lower }}">
+                                    {{ f[3] }}
+                                </span>
+                            </td>
+                            <td data-label="Ações">
+                                <div class="actions-cell">
+                                    <a href="/editar_frequencia/{{ f[0] }}" class="btn-action btn-edit">
+                                        ✏️ Editar
+                                    </a>
+                                    <a href="/excluir_frequencia/{{ f[0] }}" class="btn-action btn-delete">
+                                        🗑️ Excluir
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Rodapé -->
+            <div class="table-footer">
+                <p>Total: {{ frequencia|length }} registro(s)</p>
+        </div>
+
+    </div>
+
+</body>
+</html>

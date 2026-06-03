@@ -1,0 +1,380 @@
+body {
+    margin: 0;
+    min-height: 100vh;
+
+    background-image: url('../img/fundo.png'); /* caminho da imagem */
+    background-size: cover;      /* ocupa toda a tela */
+    background-position: center; /* centraliza */
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* ===== RESET E VARIÁVEIS ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --vermelho: #d32f2f;
+    --vermelho-escuro: #b71c1c;
+    --cinza-escuro: #333333;
+    --cinza-medio: #666666;
+    --cinza-claro: #f5f5f5;
+    --branco: #ffffff;
+    --sombra: rgba(0, 0, 0, 0.15);
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--cinza-claro);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ===== CONTAINER PRINCIPAL ===== */
+.login-container {
+    display: flex;
+    width: 100%;
+    max-width: 900px;
+    min-height: 550px;
+    background: var(--branco);
+    border-radius: 15px;
+    box-shadow: 0 15px 40px var(--sombra);
+    overflow: hidden;
+}
+
+/* ===== LADO ESQUERDO ===== */
+.login-left {
+    flex: 1;
+    background: linear-gradient(135deg, var(--vermelho) 0%, var(--vermelho-escuro) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* ===== ÁREA DA LOGO ===== */
+.logo-area {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+    text-align: center;
+    color: var(--branco);
+}
+
+/* ===== IMAGEM DA LOGO ===== */
+.logo-area img {
+    width: 90%;
+    max-width: 500px;
+    height: auto;
+    object-fit: contain;
+    margin-bottom: 25px;
+}
+
+/* ===== TEXTOS ===== */
+.login-left h2 {
+    font-size: 42px;
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+
+.login-left p {
+    font-size: 18px;
+    opacity: 0.9;
+}
+
+/* ===== LADO DIREITO ===== */
+.login-right {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 50px;
+    background: var(--branco);
+}
+
+.form-container {
+    width: 100%;
+    max-width: 350px;
+}
+
+.form-container h3 {
+    color: var(--cinza-escuro);
+    font-size: 28px;
+    margin-bottom: 8px;
+}
+
+.subtitle {
+    color: var(--cinza-medio);
+    font-size: 14px;
+    margin-bottom: 35px;
+}
+
+/* ===== INPUTS ===== */
+.input-group {
+    margin-bottom: 20px;
+}
+
+.input-group label {
+    display: block;
+    color: var(--cinza-escuro);
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.input-wrapper {
+    position: relative;
+}
+
+.input-wrapper .icon {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--cinza-medio);
+    font-size: 16px;
+}
+
+.input-wrapper input {
+    width: 100%;
+    padding: 14px 14px 14px 45px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 15px;
+    transition: all 0.3s ease;
+    background: var(--cinza-claro);
+}
+
+.input-wrapper input:focus {
+    outline: none;
+    border-color: var(--vermelho);
+    background: var(--branco);
+    box-shadow: 0 0 0 4px rgba(211, 47, 47, 0.1);
+}
+
+.input-wrapper input::placeholder {
+    color: #999;
+}
+
+/* ===== OPÇÕES ===== */
+.form-options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    font-size: 13px;
+}
+
+.checkbox-container {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    color: var(--cinza-medio);
+    user-select: none;
+}
+
+.checkbox-container input {
+    display: none;
+}
+
+.checkmark {
+    width: 18px;
+    height: 18px;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    margin-right: 8px;
+    position: relative;
+    transition: all 0.2s;
+}
+
+.checkbox-container input:checked ~ .checkmark {
+    background: var(--vermelho);
+    border-color: var(--vermelho);
+}
+
+.checkbox-container input:checked ~ .checkmark::after {
+    content: '✓';
+    position: absolute;
+    color: white;
+    font-size: 12px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.forgot-password {
+    color: var(--vermelho);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s;
+}
+
+.forgot-password:hover {
+    color: var(--vermelho-escuro);
+}
+
+/* ==========================================
+   BOTÃO ENTRAR (NOVO DESIGN)
+   ========================================== */
+.btn-entrar {
+    /* Tamanho */
+    width: 100%;
+    padding: 16px 24px;
+    
+    /* Visual */
+    background: linear-gradient(135deg, #d32f2f 0%, #b71c1c 100%);
+    color: #ffffff;
+    border: none;
+    border-radius: 10px;
+    
+    /* Texto */
+    font-size: 16px;
+    font-weight: 700;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    
+    /* Layout */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    
+    /* Cursor e interação */
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    
+    /* Transição suave */
+    transition: all 0.3s ease;
+}
+
+/* Hover: Passar o mouse */
+.btn-entrar:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(211, 47, 47, 0.4);
+    background: linear-gradient(135deg, #e53935 0%, #c62828 100%);
+}
+
+/* Active: Clicar */
+.btn-entrar:active {
+    transform: translateY(0);
+    box-shadow: 0 5px 15px rgba(211, 47, 47, 0.3);
+}
+
+/* Focus: Quando selecionado */
+.btn-entrar:focus {
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(211, 47, 47, 0.2);
+}
+
+/* Ícone */
+.btn-entrar svg {
+    width: 20px;
+    height: 20px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    transition: transform 0.3s ease;
+}
+
+.btn-entrar:hover svg {
+    transform: translateX(5px);
+}
+
+/* Efeito de brilho (Shine) */
+.btn-entrar::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.3),
+        transparent
+    );
+    transition: left 0.5s ease;
+}
+
+.btn-entrar:hover::before {
+    left: 100%;
+}
+
+/* Animação de pulso */
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(211, 47, 47, 0.5);
+    }
+    70% {
+        box-shadow: 0 0 0 15px rgba(211, 47, 47, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(211, 47, 47, 0);
+    }
+}
+
+.btn-entrar:focus-visible {
+    animation: pulse 1.5s infinite;
+}
+
+/* ===== RODAPÉ ===== */
+.login-footer {
+    margin-top: 30px;
+    text-align: center;
+    border-top: 1px solid #eee;
+    padding-top: 20px;
+}
+
+.login-footer p {
+    color: var(--cinza-medio);
+    font-size: 12px;
+}
+
+/* ===== RESPONSIVO ===== */
+@media (max-width: 768px) {
+    .login-container {
+        flex-direction: column;
+        max-width: 400px;
+        min-height: auto;
+    }
+
+    .login-left {
+        padding: 30px 20px;
+    }
+
+    .login-right {
+        padding: 40px 30px;
+    }
+
+    .logo-area img {
+        width: 80%;
+    }
+
+    .login-left h2 {
+        font-size: 28px;
+    }
+
+    .login-left p {
+        font-size: 16px;
+    }
+}

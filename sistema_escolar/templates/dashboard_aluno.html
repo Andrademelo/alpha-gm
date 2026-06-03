@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel do Aluno</title>
+
+    <link rel="stylesheet"
+        href="{{ url_for('static', filename='css/dashboard_aluno.css') }}">
+</head>
+
+<body>
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+        <div class="logo">
+            🎓 Escola
+        </div>
+
+        <nav>
+
+            <a href="#" class="active">
+                🏠 Dashboard
+            </a>
+
+            <a href="/boletim">
+                📊 Boletim
+            </a>
+
+            <a href="/perfil">
+                👤 Perfil
+            </a>
+
+            <a href="/agenda">
+                📅 Agenda
+            </a>
+
+            <a href="#">
+                ⚙️ Configurações
+            </a>
+
+        </nav>
+
+    </aside>
+
+    <!-- ÁREA PRINCIPAL -->
+    <div class="main-content">
+
+        <!-- HEADER -->
+        <header class="header">
+
+            <h1>Painel do Aluno</h1>
+
+            <div class="header-actions">
+
+                <span class="notification">
+                    🔔
+                </span>
+
+                <a href="/logout" class="btn-sair">
+                    🚪 Sair
+                </a>
+
+            </div>
+
+        </header>
+
+        <!-- CONTAINER -->
+        <main class="container">
+
+            <!-- BOAS VINDAS -->
+            <section class="welcome-section">
+
+                <div class="avatar">
+                    👨‍🎓
+                </div>
+
+                <h2>
+                    Olá, {{ session['nome'] }}! 👋
+                </h2>
+
+                <p>
+                    Bem-vindo ao seu painel acadêmico.
+                </p>
+
+            </section>
+
+            <!-- ESTATÍSTICAS -->
+            <section class="stats-grid">
+
+                <div class="stat-card">
+                    <h3>📚</h3>
+                    <span>{{ total_disciplinas }}11</span>
+                    <p>Disciplinas</p>
+                </div>
+
+                <div class="stat-card">
+                    <h3>📊</h3>
+                    <span>{{ media_geral }}9.1</span>
+                    <p>Média Geral</p>
+                </div>
+
+                <div class="stat-card">
+                    <h3>🎯</h3>
+                    <span>{{ frequencia }}100%</span>
+                    <p>Frequência</p>
+                </div>
+
+                <div class="stat-card">
+                    <h3>📅</h3>
+                    <span>{{ total_avaliacoes }}2</span>
+                    <p>Avaliações</p>
+                </div>
+
+            </section>
+
+            <!-- AÇÕES -->
+            <section class="actions-grid">
+
+                <a href="/boletim" class="action-card">
+
+                    <div class="icon">📊</div>
+
+                    <h3>Boletim</h3>
+
+                    <p>
+                        Consulte suas notas e desempenho.
+                    </p>
+
+                </a>
+
+                <a href="/perfil" class="action-card">
+
+                    <div class="icon">👤</div>
+
+                    <h3>Perfil</h3>
+
+                    <p>
+                        Visualize seus dados.
+                    </p>
+
+                </a>
+
+            </section>
+
+            <!-- AVISOS -->
+            <section class="avisos">
+
+                <h2>📢 Avisos</h2>
+
+                <div class="aviso">
+                    Prova de Matemática na próxima semana.
+                </div>
+
+                <div class="aviso">
+                    Entrega do trabalho de História até sexta-feira.
+                </div>
+
+                <div class="aviso">
+                    Reunião de pais no final do mês.
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+</body>
+
+</html>

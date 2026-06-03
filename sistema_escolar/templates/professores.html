@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professores</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/professores.css') }}">
+</head>
+
+<body>
+
+    <header class="header">
+        <h1>👨‍🏫 Sistema Escolar</h1>
+        <a href="/dashboard" class="btn-voltar">← Voltar</a>
+    </header>
+
+    <div class="container">
+        
+        <!-- Cabeçalho da Página -->
+        <div class="page-header">
+            <h2>Lista de Professores</h2>
+            <a href="/cadastrar_professor" class="btn-cadastrar">
+                ➕ Cadastrar Professor
+            </a>
+        </div>
+
+        <!-- Tabela -->
+        <div class="table-container">
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Disciplina</th>
+                        <th>Telefone</th>
+                        <th>Email</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for professor in professores %}
+                    <tr>
+                        <td>{{ professor[1] }}</td>
+                        <td>{{ professor[2] }}</td>
+                        <td>{{ professor[3] }}</td>
+                        <td>{{ professor[4] }}</td>
+                        <td>
+                            <div class="action-links">
+                                <a href="/editar_professor/{{ professor[0] }}" class="btn-editar">
+                                    ✏️ Editar
+                                </a>
+                                <a href="/excluir_professor/{{ professor[0] }}" class="btn-excluir">
+                                    🗑️ Excluir
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Rodapé -->
+        <div class="page-footer">
+            <a href="/dashboard" class="btn-voltar">
+                ← Voltar
+            </a>
+        </div>
+
+    </div>
+
+</body>
+</html>

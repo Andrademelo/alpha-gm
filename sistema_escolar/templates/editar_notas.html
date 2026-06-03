@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Notas</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/editar_notas.css') }}">
+</head>
+
+<body>
+
+    <header class="header">
+        <h1>📝 Sistema Escolar</h1>
+        <a href="/notas" class="btn-voltar">← Voltar</a>
+    </header>
+
+    <div class="container">
+        
+        <div class="form-card">
+            
+            <div class="card-header">
+                <h2>Editar Notas</h2>
+            </div>
+
+            <div class="card-body">
+
+                <form method="POST">
+
+                    <div class="form-group">
+                        <label for="disciplina">Disciplina</label>
+                        <input type="text"
+                               name="disciplina"
+                               id="disciplina"
+                               value="{{ nota[2] }}"
+                               class="form-control"
+                               placeholder="Nome da disciplina"
+                               required>
+                    </div>
+
+                    <!-- Notas em Grid -->
+                    <div class="notes-grid">
+                        <div class="form-group">
+                            <label for="nota1">Nota 1</label>
+                            <input type="number"
+                                   step="0.1"
+                                   min="0"
+                                   max="10"
+                                   name="nota1"
+                                   id="nota1"
+                                   value="{{ nota[3] }}"
+                                   class="form-control"
+                                   placeholder="0 - 10"
+                                   required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="nota2">Nota 2</label>
+                            <input type="number"
+                                   step="0.1"
+                                   min="0"
+                                   max="10"
+                                   name="nota2"
+                                   id="nota2"
+                                   value="{{ nota[4] }}"
+                                   class="form-control"
+                                   placeholder="0 - 10"
+                                   required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="nota3">Nota 3</label>
+                            <input type="number"
+                                   step="0.1"
+                                   min="0"
+                                   max="10"
+                                   name="nota3"
+                                   id="nota3"
+                                   value="{{ nota[5] }}"
+                                   class="form-control"
+                                   placeholder="0 - 10"
+                                   required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="nota4">Nota 4</label>
+                            <input type="number"
+                                   step="0.1"
+                                   min="0"
+                                   max="10"
+                                   name="nota4"
+                                   id="nota4"
+                                   value="{{ nota[6] }}"
+                                   class="form-control"
+                                   placeholder="0 - 10"
+                                   required>
+                        </div>
+                    </div>
+
+                    <div class="btn-group">
+                        <button type="submit" class="btn-submit">
+                            💾 Atualizar
+                        </button>
+                        <a href="/notas" class="btn-voltar">
+                            ← Voltar
+                        </a>
+                    </div>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+</html>

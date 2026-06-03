@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Usuários - Sistema Escolar</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/usuarios.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='img/logo.png') }}">
+</head>
+
+<body>
+
+    <!-- Cabeçalho -->
+    <div class="header">
+        <h1>👥 Usuários</h1>
+        <a href="/dashboard" class="btn-voltar">← Voltar</a>
+    </div>
+
+    <!-- Container Principal -->
+    <div class="container">
+        
+        <!-- Cabeçalho da Página -->
+        <div class="page-header">
+            <div>
+                <h2>Usuários Cadastrados</h2>
+                <p>Gerencie os usuários do sistema</p>
+            </div>
+            <a href="/cadastrar_usuario" class="btn-cadastrar">
+                ➕ Cadastrar
+            </a>
+        </div>
+
+        <!-- Card Principal -->
+        <div class="users-card">
+            
+            <!-- Cabeçalho da Tabela -->
+            <div class="table-header">
+                <span>👤 Nome</span>
+                <span>📧 Usuario</span>
+                <span>🎭 Cargo</span>
+                <span>⚙️ Ações</span>
+            </div>
+
+            <!-- Lista de Usuários -->
+            <div class="users-list">
+                {% for usuario in usuarios %}
+                <div class="user-item">
+                    <div class="user-name">
+                        <div class="user-avatar">
+                            {{ usuario[1][0] }}
+                        </div>
+                        {{ usuario[1] }}
+                    </div>
+                    <div class="user-email">
+                        {{ usuario[2] }}
+                    </div>
+                    <div>
+                        <span class="user-role role-{{ usuario[4] }}">
+                            {{ usuario[4] }}
+                        </span>
+                    </div>
+                    <div class="user-actions">
+                        <a href="/editar_usuario/{{ usuario[0] }}" class="btn-action btn-edit">
+                            ✏️ Editar
+                        </a>
+                        <a href="/excluir_usuario/{{ usuario[0] }}" class="btn-action btn-delete">
+                            🗑️ Excluir
+                        </a>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+
+            <!-- Rodapé -->
+            <div class="table-footer">
+                <p>Total: {{ usuarios|length }} usuário(s)</p>
+                <a href="/dashboard" class="btn-voltar">← Voltar ao Dashboard</a>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>

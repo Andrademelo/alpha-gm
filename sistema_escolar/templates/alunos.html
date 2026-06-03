@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alunos - Sistema Escolar</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/alunos.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='img/logo.png') }}">
+</head>
+
+<body>
+
+    <!-- Cabeçalho -->
+    <div class="header">
+        <h1>🎓 Alunos</h1>
+        <a href="/dashboard_secretaria" class="btn-voltar">← Voltar</a>
+    </div>
+
+    <!-- Container Principal -->
+    <div class="container">
+        
+        <!-- Cabeçalho da Página -->
+        <div class="page-header">
+            <div>
+                <h2>Lista de Alunos</h2>
+                <p>Gerencie os alunos da escola</p>
+            </div>
+            <a href="/cadastrar_aluno" class="btn-cadastrar">
+                ➕ Novo Aluno
+            </a>
+        </div>
+
+        <!-- Formulário de Busca -->
+        <div class="search-form">
+            <form action="/pesquisar_aluno" method="GET" class="search-box">
+                <input 
+                    type="text" 
+                    name="busca" 
+                    placeholder="Pesquisar por nome ou matrícula"
+                >
+                <button type="submit">🔍 Pesquisar</button>
+            </form>
+        </div>
+
+        <!-- Card da Tabela -->
+        <div class="table-card">
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>Matrícula</th>
+                            <th>Nascimento</th>
+                            <th>Turma</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for aluno in alunos %}
+                        <tr>
+                            <td data-label="Nome" class="aluno-nome">{{ aluno[1] }}</td>
+                            <td data-label="Matrícula">
+                                <span class="aluno-matricula">{{ aluno[2] }}</span>
+                            </td>
+                            <td data-label="Nascimento" class="aluno-nascimento">{{ aluno[3] }}</td>
+                            <td data-label="Turma" class="aluno-turma">{{ aluno[4] }}</td>
+                            <td data-label="Ações">
+                                <div class="actions-cell">
+                                    <a href="/perfil_aluno/{{ aluno[0] }}" class="btn-action btn-perfil">
+                                        👤 Perfil
+                                    </a>
+                                    <a href="/editar_aluno/{{ aluno[0] }}" class="btn-action btn-edit">
+                                        ✏️ Editar
+                                    </a>
+                                    <a href="/excluir_aluno/{{ aluno[0] }}" class="btn-action btn-delete" onclick="return confirm('Deseja excluir este aluno?')">
+                                        🗑️ Excluir
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Rodapé -->
+            <div class="table-footer">
+                <p>Total: {{ alunos|length }} aluno(s)</p>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>

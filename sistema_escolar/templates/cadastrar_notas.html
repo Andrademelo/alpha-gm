@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastrar Notas - Sistema Escolar</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/cadastrar_notas.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='img/logo.png') }}">
+</head>
+
+<body>
+
+    <!-- Cabeçalho -->
+    <div class="header">
+        <h1>📝 Cadastrar Notas</h1>
+        <a href="/notas" class="btn-voltar">← Voltar</a>
+    </div>
+
+    <!-- Container Principal -->
+    <div class="container">
+        
+        <!-- Card do Formulário -->
+        <div class="form-card">
+            <div class="card-header">
+                <h2>Nova Nota</h2>
+                <p>Preencha os dados abaixo</p>
+            </div>
+
+            <div class="card-body">
+                <form method="POST">
+                    
+                    <!-- Campo Aluno -->
+                    <div class="form-group">
+                        <label for="aluno_id">Aluno</label>
+                        <select name="aluno_id" id="aluno_id" class="form-select" required>
+                            <option value="" disabled selected>Selecione o aluno</option>
+                            {% for aluno in alunos %}
+                            <option value="{{ aluno[0] }}">{{ aluno[1] }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+
+                    <!-- Campo Disciplina -->
+                    <div class="form-group">
+                        <label for="disciplina">Disciplina</label>
+                        <input 
+                            type="text" 
+                            name="disciplina" 
+                            id="disciplina"
+                            class="form-control" 
+                            placeholder="Ex: Matemática" 
+                            required
+                        >
+                    </div>
+
+                    <!-- Grid de Notas -->
+                    <div class="notas-grid">
+                        <div class="nota-item">
+                            <label for="nota1">Nota 1</label>
+                            <input 
+                                type="number" 
+                                step="0.1" 
+                                min="0" 
+                                max="10" 
+                                name="nota1" 
+                                id="nota1"
+                                class="form-control" 
+                                placeholder="0-10" 
+                                required
+                            >
+                        </div>
+
+                        <div class="nota-item">
+                            <label for="nota2">Nota 2</label>
+                            <input 
+                                type="number" 
+                                step="0.1" 
+                                min="0" 
+                                max="10" 
+                                name="nota2" 
+                                id="nota2"
+                                class="form-control" 
+                                placeholder="0-10" 
+                                required
+                            >
+                        </div>
+
+                        <div class="nota-item">
+                            <label for="nota3">Nota 3</label>
+                            <input 
+                                type="number" 
+                                step="0.1" 
+                                min="0" 
+                                max="10" 
+                                name="nota3" 
+                                id="nota3"
+                                class="form-control" 
+                                placeholder="0-10" 
+                                required
+                            >
+                        </div>
+
+                        <div class="nota-item">
+                            <label for="nota4">Nota 4</label>
+                            <input 
+                                type="number" 
+                                step="0.1" 
+                                min="0" 
+                                max="10" 
+                                name="nota4" 
+                                id="nota4"
+                                class="form-control" 
+                                placeholder="0-10" 
+                                required
+                            >
+                        </div>
+                    </div>
+
+                    <!-- Botões -->
+                    <div class="btn-group">
+                        <button type="submit" class="btn-submit">
+                            <span>💾 Salvar Notas</span>
+                        </button>
+                    </div>
+
+                </form>
+
+                <!-- Rodapé -->
+                <div class="form-footer">
+                    <p>&copy; 2026 Sistema Alpha GM.</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>

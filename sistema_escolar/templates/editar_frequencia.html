@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Frequência</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/editar_frequencia.css') }}">
+</head>
+
+<body>
+
+    <header class="header">
+        <h1>📋 Sistema Escolar</h1>
+        <a href="/frequencia" class="btn-voltar">← Voltar</a>
+    </header>
+
+    <div class="container">
+        
+        <div class="form-card">
+            
+            <div class="card-header">
+                <h2>Editar Frequência</h2>
+            </div>
+
+            <div class="card-body">
+
+                <form method="POST">
+
+                    <div class="form-group">
+                        <label for="aluno_id">Aluno</label>
+                        <select name="aluno_id"
+                                id="aluno_id"
+                                class="form-select">
+                            
+                            {% for aluno in alunos %}
+                            <option value="{{ aluno[0] }}"
+                                    {% if aluno[0] == frequencia[1] %}
+                                    selected
+                                    {% endif %}>
+                                {{ aluno[1] }}
+                            </option>
+                            {% endfor %}
+
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="data">Data</label>
+                        <input type="date"
+                               name="data"
+                               id="data"
+                               value="{{ frequencia[2] }}"
+                               class="form-control"
+                               required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="status">Status</label>
+                        <select name="status"
+                                id="status"
+                                class="form-select">
+                            
+                            <option value="Presente"
+                                    {% if frequencia[3] == "Presente" %}
+                                    selected
+                                    {% endif %}>
+                                Presente ✓
+                            </option>
+
+                            <option value="Falta"
+                                    {% if frequencia[3] == "Falta" %}
+                                    selected
+                                    {% endif %}>
+                                Falta ✗
+                            </option>
+
+                        </select>
+                    </div>
+
+                    <div class="btn-group">
+                        <button type="submit" class="btn-submit">
+                            💾 Atualizar
+                        </button>
+                        <a href="/frequencia" class="btn-voltar">
+                            ← Voltar
+                        </a>
+                    </div>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+</html>

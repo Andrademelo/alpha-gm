@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relatório de Frequência</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/relatorio_frequencia.css') }}">
+</head>
+
+<body>
+
+    <header class="header">
+        <h1>📊 Sistema Escolar</h1>
+        <a href="/dashboard" class="btn-voltar">← Voltar</a>
+    </header>
+
+    <div class="container">
+        
+        <!-- Cabeçalho da Página -->
+        <div class="page-header">
+            <h2>Relatório de Frequência</h2>
+        </div>
+
+        <!-- Tabela -->
+        <div class="table-container">
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Aluno</th>
+                        <th>Data</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for f in frequencia %}
+                    <tr>
+                        <td>{{ f[4] }}</td>
+                        <td>{{ f[2] }}</td>
+                        <td>
+                            {% if f[3] == 'Presente' %}
+                            <span class="status-badge presente">✓ Presente</span>
+                            {% else %}
+                            <span class="status-badge falta">✗ Falta</span>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Botões -->
+        <div class="button-group">
+            <button onclick="window.print()" class="btn-imprimir">
+                🖨️ Imprimir Relatório
+            </button>
+            <a href="/dashboard" class="btn-voltar">
+                ← Voltar
+            </a>
+        </div>
+
+    </div>
+
+</body>
+</html>

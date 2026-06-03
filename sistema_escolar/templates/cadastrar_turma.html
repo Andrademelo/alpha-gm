@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastrar Turma - Sistema Escolar</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/cadastrar_turma.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='img/logo.png') }}">
+</head>
+
+<body>
+
+    <!-- Cabeçalho -->
+    <div class="header">
+        <h1>🏫 Cadastrar Turma</h1>
+        <a href="/turmas" class="btn-voltar">← Voltar</a>
+    </div>
+
+    <!-- Container Principal -->
+    <div class="container">
+        
+        <!-- Card do Formulário -->
+        <div class="form-card">
+            <div class="card-header">
+                <h2>Nova Turma</h2>
+                <p>Preencha os dados abaixo</p>
+            </div>
+
+            <div class="card-body">
+
+                {% if erro %}
+                <div class="erro-msg" style="color:red; margin-bottom:10px;">
+                    ⚠️ {{ erro }}
+                </div>
+                {% endif %}
+
+                <form method="POST">
+                    
+                    <!-- Campo Nome -->
+                    <div class="form-group">
+                        <label for="nome">Nome da Turma</label>
+                        <div class="input-wrapper">
+                            <span class="icon"></span>
+                            <input 
+                                type="text" 
+                                name="nome" 
+                                id="nome"
+                                class="form-control" 
+                                placeholder="Ex: Turma A" 
+                                required
+                            >
+                        </div>
+                    </div>
+
+                    <!-- Campo Série -->
+                    <div class="form-group">
+                        <label for="serie">Série</label>
+                        <div class="input-wrapper">
+                            <span class="icon"></span>
+                            <input 
+                                type="text" 
+                                name="serie" 
+                                id="serie"
+                                class="form-control" 
+                                placeholder="Ex: 1º Ano" 
+                                required
+                            >
+                        </div>
+                    </div>
+
+                    <!-- Campo Sala -->
+                    <div class="form-group">
+                        <label for="sala">Sala</label>
+                        <div class="input-wrapper">
+                            <span class="icon"></span>
+                            <input 
+                                type="text" 
+                                name="sala" 
+                                id="sala"
+                                class="form-control" 
+                                placeholder="Ex: Sala 101"
+                            >
+                        </div>
+                    </div>
+
+                    <!-- Botões -->
+                    <div class="btn-group">
+                        <a href="/turmas" class="btn-voltar">
+                            ← Voltar
+                        </a>
+                        <button type="submit" class="btn-submit">
+                            <span>💾 Salvar Turma</span>
+                        </button>
+                    </div>
+
+                </form>
+
+                <!-- Rodapé -->
+                <div class="form-footer">
+                    <p>&copy; 2026 Sistema Alpha GM.</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>

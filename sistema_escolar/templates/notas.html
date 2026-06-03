@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notas - Sistema Escolar</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/notas.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='img/logo.png') }}">
+</head>
+
+<body>
+
+    <!-- Cabeçalho -->
+    <div class="header">
+        <h1>📝 Notas</h1>
+        <a href="/dashboard_professor" class="btn-voltar">← Voltar</a>
+    </div>
+
+    <!-- Container Principal -->
+    <div class="container">
+        
+        <!-- Cabeçalho da Página -->
+        <div class="page-header">
+            <div class="title-area">
+                <h2>Lista de Notas</h2>
+                <p>Gerencie as notas dos alunos</p>
+            </div>
+            <a href="/cadastrar_notas" class="btn-cadastrar">
+                ➕ Cadastrar Nota
+            </a>
+        </div>
+
+        <!-- Card da Tabela -->
+        <div class="table-card">
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Aluno</th>
+                            <th>Disciplina</th>
+                            <th>Nota 1</th>
+                            <th>Nota 2</th>
+                            <th>Nota 3</th>
+                            <th>Nota 4</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for nota in notas %}
+                        <tr>
+                            <td data-label="Aluno">{{ nota[1] }}</td>
+                            <td data-label="Disciplina">{{ nota[2] }}</td>
+                            <td data-label="Nota 1" class="nota-cell">{{ nota[3] }}</td>
+                            <td data-label="Nota 2" class="nota-cell">{{ nota[4] }}</td>
+                            <td data-label="Nota 3" class="nota-cell">{{ nota[5] }}</td>
+                            <td data-label="Nota 4" class="nota-cell">{{ nota[6] }}</td>
+                            <td data-label="Ações">
+                                <div class="actions-cell">
+                                    <a href="/editar_notas/{{ nota[0] }}" class="btn-action btn-edit">
+                                        ✏️ Editar
+                                    </a>
+                                    <a href="/excluir_notas/{{ nota[0] }}" class="btn-action btn-delete">
+                                        🗑️ Excluir
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Rodapé -->
+            <div class="table-footer">
+                <p>Total: {{ notas|length }} registro(s)</p>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>

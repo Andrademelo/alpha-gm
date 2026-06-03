@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relatório de Notas</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/relatorio_notas.css') }}">
+</head>
+
+<body>
+
+    <header class="header">
+        <h1>📊 Sistema Escolar</h1>
+        <a href="/dashboard" class="btn-voltar">← Voltar</a>
+    </header>
+
+    <div class="container">
+        
+        <!-- Cabeçalho da Página -->
+        <div class="page-header">
+            <h2>Relatório de Notas</h2>
+        </div>
+
+        <!-- Tabela -->
+        <div class="table-container">
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Aluno</th>
+                        <th>Disciplina</th>
+                        <th>Nota 1</th>
+                        <th>Nota 2</th>
+                        <th>Nota 3</th>
+                        <th>Nota 4</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for nota in notas %}
+                    <tr>
+                        <td>{{ nota[7] }}</td>
+                        <td>{{ nota[2] }}</td>
+                        <td>
+                            {% if nota[3] >= 7 %}
+                            <span class="grade-badge excellent">{{ nota[3] }}</span>
+                            {% elif nota[3] >= 5 %}
+                            <span class="grade-badge warning">{{ nota[3] }}</span>
+                            {% else %}
+                            <span class="grade-badge danger">{{ nota[3] }}</span>
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if nota[4] >= 7 %}
+                            <span class="grade-badge excellent">{{ nota[4] }}</span>
+                            {% elif nota[4] >= 5 %}
+                            <span class="grade-badge warning">{{ nota[4] }}</span>
+                            {% else %}
+                            <span class="grade-badge danger">{{ nota[4] }}</span>
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if nota[5] >= 7 %}
+                            <span class="grade-badge excellent">{{ nota[5] }}</span>
+                            {% elif nota[5] >= 5 %}
+                            <span class="grade-badge warning">{{ nota[5] }}</span>
+                            {% else %}
+                            <span class="grade-badge danger">{{ nota[5] }}</span>
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if nota[6] >= 7 %}
+                            <span class="grade-badge excellent">{{ nota[6] }}</span>
+                            {% elif nota[6] >= 5 %}
+                            <span class="grade-badge warning">{{ nota[6] }}</span>
+                            {% else %}
+                            <span class="grade-badge danger">{{ nota[6] }}</span>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Botões -->
+        <div class="button-group">
+            <button onclick="window.print()" class="btn-imprimir">
+                🖨️ Imprimir Relatório
+            </button>
+            <a href="/dashboard" class="btn-voltar">
+                ← Voltar
+            </a>
+        </div>
+
+    </div>
+
+</body>
+</html>

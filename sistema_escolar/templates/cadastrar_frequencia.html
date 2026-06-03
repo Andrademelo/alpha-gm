@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastrar Frequência - Sistema Escolar</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/cadastrar_frequencia.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='img/logo.png') }}">
+</head>
+
+<body>
+
+    <!-- Cabeçalho -->
+    <div class="header">
+        <h1>✅ Cadastrar Frequência</h1>
+        <a href="/frequencia" class="btn-voltar">← Voltar</a>
+    </div>
+
+    <!-- Container Principal -->
+    <div class="container">
+        
+        <!-- Card do Formulário -->
+        <div class="form-card">
+            <div class="card-header">
+                <h2>Nova Frequência</h2>
+                <p>Registre a presença do aluno</p>
+            </div>
+
+            <div class="card-body">
+                <form method="POST">
+                    
+                    <!-- Campo Aluno -->
+                    <div class="form-group">
+                        <label for="aluno_id">Aluno</label>
+                        <select name="aluno_id" id="aluno_id" class="form-select" required>
+                            <option value="" disabled selected>Selecione o aluno</option>
+                            {% for aluno in alunos %}
+                            <option value="{{ aluno[0] }}">{{ aluno[1] }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+
+                    <!-- Campo Data -->
+                    <div class="form-group">
+                        <label for="data">Data</label>
+                        <input 
+                            type="date" 
+                            name="data" 
+                            id="data"
+                            class="form-control" 
+                            required
+                        >
+                    </div>
+
+                    <!-- Status (Radio Buttons Estilizados) -->
+                    <div class="form-group">
+                        <label>Status</label>
+                        <div class="status-options">
+                            <div class="status-option">
+                                <input 
+                                    type="radio" 
+                                    name="status" 
+                                    id="presente" 
+                                    value="Presente" 
+                                    checked
+                                    required
+                                >
+                                <label for="presente">
+                                    <span class="status-icon">✅</span>
+                                    <span class="status-text">Presente</span>
+                                </label>
+                            </div>
+                            <div class="status-option">
+                                <input 
+                                    type="radio" 
+                                    name="status" 
+                                    id="falta" 
+                                    value="Falta" 
+                                    required
+                                >
+                                <label for="falta">
+                                    <span class="status-icon">❌</span>
+                                    <span class="status-text">Falta</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Botões -->
+                    <div class="btn-group">
+                        <button type="submit" class="btn-submit">
+                            <span>💾 Salvar Frequência</span>
+                        </button>
+                    </div>
+
+                </form>
+
+                <!-- Rodapé -->
+                <div class="form-footer">
+                    <p>&copy; 2026 Sistema Alpha GM.</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>

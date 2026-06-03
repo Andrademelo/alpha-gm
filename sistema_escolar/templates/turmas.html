@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Turmas - Sistema Escolar</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/turmas.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='img/logo.png') }}">
+</head>
+
+<body>
+
+    <!-- Cabeçalho -->
+    <div class="header">
+        <h1>🏫 Turmas</h1>
+        <a href="/dashboard" class="btn-voltar">← Voltar</a>
+    </div>
+
+    <!-- Container Principal -->
+    <div class="container">
+        
+        <!-- Cabeçalho da Página -->
+        <div class="page-header">
+            <div class="title-area">
+                <h2>Lista de Turmas</h2>
+                <p>Gerencie as turmas da escola</p>
+            </div>
+            <a href="/cadastrar_turma" class="btn-cadastrar">
+                ➕ Cadastrar Turma
+            </a>
+        </div>
+
+        <!-- Card da Tabela -->
+        <div class="table-card">
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>Série</th>
+                            <th>Sala</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for turma in turmas %}
+                        <tr>
+                            <td data-label="Nome" class="turma-nome">{{ turma[1] }}</td>
+                            <td data-label="Série">
+                                <span class="turma-serie">{{ turma[2] }}</span>
+                            </td>
+                            <td data-label="Sala" class="turma-sala">{{ turma[3] }}</td>
+                            <td data-label="Ações">
+                                <div class="actions-cell">
+                                    <a href="/editar_turma/{{ turma[0] }}" class="btn-action btn-edit">
+                                        ✏️ Editar
+                                    </a>
+                                    <a href="/excluir_turma/{{ turma[0] }}" class="btn-action btn-delete">
+                                        🗑️ Excluir
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Rodapé -->
+            <div class="table-footer">
+                <p>Total: {{ turmas|length }} turma(s)</p>
+            </div>
+        </div>
+
+        <!-- Links Voltar -->
+        <div class="voltar-links">
+            <a href="/dashboard" class="btn-voltar">
+                ← Voltar ao Dashboard
+            </a>
+        </div>
+
+    </div>
+
+</body>
+</html>

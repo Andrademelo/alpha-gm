@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Professor - Sistema Escolar</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard_professor.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='img/logo.png') }}">
+</head>
+
+<body>
+
+    <!-- Cabeçalho -->
+    <div class="header">
+        <h1>📚 Painel do Professor</h1>
+        <div class="user-info">
+            <span>Bem-vindo, {{ nome }}</span>
+            <a href="/logout" class="btn-sair">🚪 Sair</a>
+        </div>
+    </div>
+
+    <!-- Container Principal -->
+    <div class="container">
+        
+        <!-- Boas-vindas -->
+        <div class="welcome-section">
+            <h2> {{ nome }}Emerson 👋</h2>
+            <p>O que você gostaria de fazer hoje?</p>
+        </div>
+
+        <!-- Cards de Ação -->
+        <div class="actions-grid">
+            <!-- Notas -->
+            <a href="/notas" class="action-card">
+                <div class="icon">📝</div>
+                <h3>Notas</h3>
+                <p>Gerenciar notas dos alunos</p>
+            </a>
+
+            <!-- Frequência -->
+            <a href="/frequencia" class="action-card">
+                <div class="icon">✅</div>
+                <h3>Frequência</h3>
+                <p>Controlar presença diária</p>
+            </a>
+
+            <!-- Perfil -->
+            <a href="/perfil" class="action-card">
+                <div class="icon">👤</div>
+                <h3>Perfil</h3>
+                <p>Ver e editar seus dados</p>
+            </a>
+
+            <!-- Turmas -->
+            <a href="/turmas" class="action-card">
+                <div class="icon">🏫</div>
+                <h3>Turmas</h3>
+                <p>Ver suas turmas</p>
+            </a>
+        </div>
+
+        <!-- Informações Rápidas -->
+        <div class="quick-info">
+            <h3>Resumo Rápido</h3>
+            <div class="info-grid">
+                <div class="info-item">
+                    <span>Total de Turmas</span>
+                    <strong>{{ total_turmas }}3</strong>
+                </div>
+                <div class="info-item">
+                    <span>Total de Alunos</span>
+                    <strong>{{ total_alunos }}3</strong>
+                </div>
+                <div class="info-item">
+                    <span>Aulas Hoje</span>
+                    <strong>{{ aulas_hoje }}7</strong>
+                </div>
+                <div class="info-item">
+                    <span>Média Geral</span>
+                    <strong>{{ media_geral }}Excelente</strong>
+                </div>
+            </div>
+            
+        </div>
+        <!-- Avisos e Reuniões -->
+        <div class="extra-grid">
+
+   
+         <div class="extra-card">
+            <h3>📢 Avisos</h3>
+        <ul>     
+    
+            <li>Entrega de notas até sexta-feira.</li>
+    
+            <li>Feira de Ciências dia 20.</li>
+            <li>Simulado geral na próxima semana.</li>
+            <li>Atualização do calendário escolar.</li>
+        </ul>
+    </div>
+
+    <div class="extra-card">
+        <h3>🤝 Reuniões</h3>
+
+        <ul>
+            <li>Conselho de Classe - 10/06</li>
+            <li>Reunião Pedagógica - 15/06</li>
+            <li>Reunião com Responsáveis - 22/06</li>
+            <li>Planejamento Escolar - 30/06</li>
+        </ul>
+    </div>
+
+</div>
+        <!-- Botão Sair -->
+        <div class="logout-section">
+            <a href="/logout" class="btn-logout">
+                🚪 Sair do Sistema
+            </a>
+        </div>
+
+    </div>
+
+</body>
+</html>

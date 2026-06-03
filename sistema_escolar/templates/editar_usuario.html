@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Usuário</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/editar_usuario.css') }}">
+</head>
+
+<body>
+
+    <header class="header">
+        <h1>👤 Sistema Escolar</h1>
+        <a href="/usuarios" class="btn-voltar">← Voltar</a>
+    </header>
+
+    <div class="container">
+        
+        <div class="form-card">
+            
+            <div class="card-header">
+                <h2>Editar Usuário</h2>
+                <p>Atualize os dados do usuário abaixo.</p>
+            </div>
+
+            <div class="card-body">
+
+                <form method="POST">
+
+                    <div class="form-group">
+                        <label for="nome">Nome</label>
+                        <input type="text" 
+                               id="nome"
+                               name="nome" 
+                               value="{{ usuario[1] }}"
+                               class="form-control" 
+                               placeholder="Digite o nome" 
+                               required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="usuario">Usuário</label>
+                        <input type="text" 
+                               id="usuario"
+                               name="usuario" 
+                               value="{{ usuario[2] }}"
+                               class="form-control" 
+                               placeholder="Digite o usuário" 
+                               required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="senha">Senha</label>
+                        <input type="text" 
+                               id="senha"
+                               name="senha" 
+                               value="{{ usuario[3] }}"
+                               class="form-control" 
+                               placeholder="Digite a senha" 
+                               required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="cargo">Cargo</label>
+                        <select name="cargo"
+                                id="cargo"
+                                class="form-select">
+                            
+                            <option value="admin"
+                                    {% if usuario[4] == "admin" %}
+                                    selected
+                                    {% endif %}>
+                                Admin
+                            </option>
+
+                            <option value="professor"
+                                    {% if usuario[4] == "professor" %}
+                                    selected
+                                    {% endif %}>
+                                Professor
+                            </option>
+
+                            <option value="secretaria"
+                                    {% if usuario[4] == "secretaria" %}
+                                    selected
+                                    {% endif %}>
+                                Secretaria
+                            </option>
+
+                            <option value="aluno"
+                                    {% if usuario[4] == "aluno" %}
+                                    selected
+                                    {% endif %}>
+                                Aluno
+                            </option>
+
+                        </select>
+                    </div>
+
+                    <div class="btn-group">
+                        <button type="submit" class="btn-submit">
+                            💾 Salvar alterações
+                        </button>
+                        <a href="/usuarios" class="btn-voltar">
+                            ← Voltar
+                        </a>
+                    </div>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+</html>

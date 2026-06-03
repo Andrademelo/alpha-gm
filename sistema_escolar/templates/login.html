@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Sistema Escolar</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <!-- Ícone da Escola -->
+    <link rel="icon" href="{{ url_for('static', filename='img/logo.png') }}">
+</head>
+
+<body>
+
+    <div class="login-container">
+        <!-- Lado Esquerdo: Imagem/Logo -->
+        <div class="login-left">
+            <div class="logo-area">
+                <div class="logo-icon">
+                    <img src="{{ url_for('static', filename='img/logo.png') }}"></div>
+                <h2>Colégio Digital</h2>
+                <p>Sistema de Gestão Escolar</p>
+            </div>
+        </div>
+
+        <!-- Lado Direito: Formulário -->
+        <div class="login-right">
+            <div class="form-container">
+                <h3>Bem-vindo de volta!</h3>
+                <p class="subtitle">Faça login para acessar o sistema</p>
+
+                <form method="POST">
+                    
+                    <!-- Campo Usuário -->
+                    <div class="input-group">
+                        <label for="usuario">Usuário</label>
+                        <div class="input-wrapper">
+                            <span class="icon">👤</span>
+                            <input 
+                                type="text" 
+                                id="usuario"
+                                name="usuario" 
+                                placeholder="Digite seu usuário" 
+                                required
+                            >
+                        </div>
+                    </div>
+
+                    <!-- Campo Senha -->
+                    <div class="input-group">
+                        <label for="senha">Senha</label>
+                        <div class="input-wrapper">
+                            <span class="icon">🔒</span>
+                            <input 
+                                type="password" 
+                                id="senha"
+                                name="senha" 
+                                placeholder="Digite sua senha" 
+                                required
+                            >
+                        </div>
+                    </div>
+
+                    <!-- Opções extras -->
+                    <div class="form-options">
+                        <label class="checkbox-container">
+                            <input type="checkbox" name="lembrar">
+                            <span class="checkmark"></span>
+                            Lembrar-me
+                        </label>
+                        <a href="#" class="forgot-password">Esqueceu a senha?</a>
+                    </div>
+
+                    <!-- Botão Entrar (NOVO DESIGN) -->
+                    <button type="submit" class="btn-entrar">
+                        <span>Entrar</span>
+                        <svg viewBox="0 0 24 24">
+                            <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+
+                </form>
+
+                <div class="login-footer">
+                    <p>&copy; 2026 Sistema Alpha GM.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

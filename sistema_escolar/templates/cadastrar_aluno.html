@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastrar Aluno - Sistema Escolar</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/cadastrar_aluno.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='img/logo.png') }}">
+</head>
+
+<body>
+
+    <!-- Cabeçalho -->
+    <div class="header">
+        <h1>🎓 Cadastrar Aluno</h1>
+        <a href="/dashboard" class="btn-voltar">← Voltar</a>
+    </div>
+
+    <!-- Container Principal -->
+    <div class="container">
+        
+        <!-- Card do Formulário -->
+        <div class="form-card">
+            <div class="card-header">
+                <h2>Novo Aluno</h2>
+                <p>Preencha os dados abaixo</p>
+            </div>
+
+            <div class="card-body">
+                <form method="POST">
+                    
+                    <!-- Campo Nome -->
+                    <div class="form-group">
+                        <label for="nome">Nome Completo</label>
+                        <div class="input-wrapper">
+                            <span class="icon">👤</span>
+                            <input 
+                                type="text" 
+                                name="nome" 
+                                id="nome"
+                                class="form-control" 
+                                placeholder="Digite o nome completo" 
+                                required
+                            >
+                        </div>
+                    </div>
+
+                    <!-- Campo Matrícula -->
+                    <div class="form-group">
+                        <label for="matricula">Matrícula</label>
+                        <div class="input-wrapper">
+                            <span class="icon">🎫</span>
+                            <input 
+                                type="text" 
+                                name="matricula" 
+                                id="matricula"
+                                class="form-control" 
+                                placeholder="Digite a matrícula" 
+                                required
+                            >
+                        </div>
+                    </div>
+
+                    <!-- Campo Data de Nascimento -->
+                    <div class="form-group">
+                        <label for="nascimento">Data de Nascimento</label>
+                        <div class="input-wrapper">
+                            <span class="icon">📅</span>
+                            <input 
+                                type="date" 
+                                name="nascimento" 
+                                id="nascimento"
+                                class="form-control" 
+                                required
+                            >
+                        </div>
+                    </div>
+
+                    <!-- Campo Turma -->
+                    <div class="form-group">
+                        <label for="turma">Turma</label>
+                        <div class="input-wrapper">
+                            <span class="icon">🏫</span>
+                            <input 
+                                type="text" 
+                                name="turma" 
+                                id="turma"
+                                class="form-control" 
+                                placeholder="Digite a turma"
+                            >
+                        </div>
+                    </div>
+
+                    <!-- Botões -->
+                    <div class="btn-group">
+                        <button type="submit" class="btn-submit">
+                            <span>💾 Cadastrar</span>
+                        </button>
+                    </div>
+
+                </form>
+
+                <!-- Rodapé -->
+                <div class="form-footer">
+                    <p>&copy; 2026 Sistema Alpha GM.</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>

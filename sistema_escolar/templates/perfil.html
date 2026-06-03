@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil - Sistema Escolar</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/perfil.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='img/logo.png') }}">
+</head>
+
+<body>
+
+    <!-- Cabeçalho -->
+    <div class="header">
+        <h1>👤 Perfil</h1>
+        <a href="/dashboard" class="btn-voltar">← Voltar</a>
+    </div>
+
+    <!-- Container Principal -->
+    <div class="container">
+        
+        <!-- Card de Perfil -->
+        <div class="profile-card">
+            
+            <!-- Cabeçalho do Perfil -->
+            <div class="profile-header">
+                <!-- Avatar (Inicial) -->
+                <div class="profile-avatar">
+                    {{ usuario[1][0] }}
+                </div>
+                
+                <h2>{{ usuario[1] }}</h2>
+                
+                <span class="profile-role">
+                    {{ usuario[4] }}
+                </span>
+            </div>
+
+            <!-- Corpo do Perfil -->
+            <div class="profile-body">
+                <div class="profile-info">
+                    
+                    <!-- Nome -->
+                    <div class="info-item">
+                        <div class="info-icon">👤</div>
+                        <div class="info-content">
+                            <span class="info-label">Nome Completo</span>
+                            <span class="info-value">{{ usuario[1] }}</span>
+                        </div>
+                    </div>
+
+                    <!-- Usuário -->
+                    <div class="info-item">
+                        <div class="info-icon">🔹</div>
+                        <div class="info-content">
+                            <span class="info-label">Usuário</span>
+                            <span class="info-value">{{ usuario[2] }}</span>
+                        </div>
+                    </div>
+
+                    <!-- Cargo -->
+                    <div class="info-item">
+                        <div class="info-icon">🎭</div>
+                        <div class="info-content">
+                            <span class="info-label">Cargo / Função</span>
+                            <span class="info-value">{{ usuario[4] }}</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Rodapé -->
+            <div class="profile-footer">
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>

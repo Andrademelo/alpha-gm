@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Sistema Escolar</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
+</head>
+
+<body>
+
+    <!-- CABEÇALHO -->
+    <header class="header">
+
+        <h1>🎓 Sistema Escolar</h1>
+
+        <div class="user-info">
+            <span>Bem-vindo, {{ session['usuario'] }}</span>
+            <a href="/logout" class="btn-sair">Sair</a>
+        </div>
+
+    </header>
+
+    <!-- CONTEÚDO -->
+    <div class="container">
+
+        <!-- BOAS-VINDAS -->
+        <div class="welcome-card">
+
+            <div>
+                <h1>Olá, {{ session['usuario'] }}! 👋</h1>
+
+                <p>
+                    Bem-vindo ao painel administrativo do Sistema Escolar.
+                </p>
+            </div>
+
+            <div class="welcome-badge">
+                Administrador
+            </div>
+
+        </div>
+
+        <!-- ESTATÍSTICAS -->
+        <div class="stats-grid">
+
+            <div class="stat-card">
+
+                <div class="stat-icon">👨‍🎓</div>
+
+                <div class="stat-info">
+                    <h3>Total de Alunos</h3>
+                    <div class="number">{{ total_alunos }}</div>
+                </div>
+
+            </div>
+
+            <div class="stat-card">
+
+                <div class="stat-icon">👨‍🏫</div>
+
+                <div class="stat-info">
+                    <h3>Total de Professores</h3>
+                    <div class="number">{{ total_professores }}</div>
+                </div>
+
+            </div>
+
+            <div class="stat-card">
+
+                <div class="stat-icon">📚</div>
+
+                <div class="stat-info">
+                    <h3>Total de Turmas</h3>
+                    <div class="number">{{ total_turmas }}</div>
+                </div>
+
+            </div>
+
+            <div class="stat-card">
+
+                <div class="stat-icon">👤</div>
+
+                <div class="stat-info">
+                    <h3>Total de Usuários</h3>
+                    <div class="number">{{ total_usuarios }}</div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- GERENCIAMENTO -->
+        <div class="management-section">
+
+            <h2>⚙️ Gerenciamento do Sistema</h2>
+
+            <div class="management-grid">
+
+                <a href="/alunos" class="management-card">
+
+                    <div class="card-icon">🎓</div>
+
+                    <h3>Alunos</h3>
+
+                    <p>
+                        Cadastrar, editar e visualizar alunos.
+                    </p>
+
+                </a>
+
+                <a href="/professores" class="management-card">
+
+                    <div class="card-icon">👨‍🏫</div>
+
+                    <h3>Professores</h3>
+
+                    <p>
+                        Gerenciar professores da instituição.
+                    </p>
+
+                </a>
+
+                <a href="/turmas" class="management-card">
+
+                    <div class="card-icon">🏫</div>
+
+                    <h3>Turmas</h3>
+
+                    <p>
+                        Controle completo das turmas.
+                    </p>
+
+                </a>
+
+                <a href="/usuarios" class="management-card">
+
+                    <div class="card-icon">👤</div>
+
+                    <h3>Usuários</h3>
+
+                    <p>
+                        Gerenciar acessos ao sistema.
+                    </p>
+
+                </a>
+
+                <a href="/cadastrar_aluno" class="management-card">
+
+                    <div class="card-icon">➕</div>
+
+                    <h3>Novo Aluno</h3>
+
+                    <p>
+                        Realizar novo cadastro de aluno.
+                    </p>
+
+                </a>
+
+                <a href="/cadastrar_professor" class="management-card">
+
+                    <div class="card-icon">📝</div>
+
+                    <h3>Novo Professor</h3>
+
+                    <p>
+                        Cadastrar professor no sistema.
+                    </p>
+
+                </a>
+
+                <a href="/cadastrar_turma" class="management-card">
+
+                    <div class="card-icon">📚</div>
+
+                    <h3>Nova Turma</h3>
+
+                    <p>
+                        Criar e organizar novas turmas.
+                    </p>
+
+                </a>
+
+            </div>
+
+        </div>
+
+        <!-- PAINÉIS -->
+        <div class="dashboard-bottom">
+
+            <!-- AVISOS -->
+            <div class="panel-card">
+
+                <h2>📢 Avisos</h2>
+
+                <div class="notice-item">
+
+                    <strong>Reunião Pedagógica</strong>
+
+                    <p>
+                        Dia 25 às 14h no auditório principal.
+                    </p>
+
+                </div>
+
+                <div class="notice-item">
+
+                    <strong>Fechamento de Notas</strong>
+
+                    <p>
+                        Prazo final para lançamento até sexta-feira.
+                    </p>
+
+                </div>
+
+                <div class="notice-item">
+
+                    <strong>Matrículas</strong>
+
+                    <p>
+                        Período de matrículas aberto para novos alunos.
+                    </p>
+
+                </div>
+
+            </div>
+
+            <!-- ATIVIDADES -->
+            <div class="panel-card">
+
+                <h2>📋 Atividades Recentes</h2>
+
+                <div class="activity-item">
+                    👨‍🎓 Novo aluno cadastrado
+                </div>
+
+                <div class="activity-item">
+                    👨‍🏫 Professor atualizado
+                </div>
+
+                <div class="activity-item">
+                    🏫 Nova turma criada
+                </div>
+
+                <div class="activity-item">
+                    📚 Boletins gerados
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+</html>
